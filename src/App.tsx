@@ -10,6 +10,7 @@ import { StatusBar } from './components/StatusBar';
 import { SaveScoreForm } from './components/SaveScoreForm';
 import { Scoreboard } from './components/Scoreboard';
 import { GameTimer } from './components/GameTimer';
+import { DraftBoard } from './components/DraftBoard';
 import { useGame } from './hooks/useGame';
 import './App.css';
 
@@ -89,6 +90,7 @@ function App() {
 
         {gameId && !finished && (
           <>
+            <DraftBoard />
             <GameTimer startTime={startTime} endTime={null} />
             <GuessForm
               onSubmit={submitGuess}

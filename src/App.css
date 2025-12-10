@@ -800,6 +800,147 @@ button:disabled {
   }
 }
 
+/* =========================================
+   Draft Board Styles (Premium Glassmorphism)
+   ========================================= */
+
+.draft-board-container {
+  margin: 2rem 0;
+  perspective: 1000px;
+}
+
+.draft-board-glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.draft-board-glass:hover {
+  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.draft-title {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #555;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  opacity: 0.8;
+}
+
+.digits-grid {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  padding: 0.5rem;
+}
+
+.digit-card {
+  width: 3rem;
+  height: 3.5rem;
+  position: relative;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.6);
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif; /* Asegurar fuente moderna */
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* Hover Effect */
+.digit-card:hover {
+  transform: translateY(-4px) scale(1.05);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Click Active Effect */
+.digit-card:active {
+  transform: scale(0.95);
+}
+
+/* State: Neutral */
+.digit-card.neutral {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* State: Eliminated (Rojo) */
+.digit-card.eliminated {
+  background: rgba(255, 235, 238, 0.4);
+  color: #d32f2f;
+  opacity: 0.6;
+  border: 1px solid rgba(211, 47, 47, 0.2);
+  transform: scale(0.95);
+}
+
+.mark-x {
+  position: absolute;
+  font-size: 2.5rem;
+  color: rgba(211, 47, 47, 0.3);
+  pointer-events: none;
+  font-weight: 300;
+}
+
+/* State: Potential (Verde Neón) */
+.digit-card.potential {
+  background: rgba(220, 252, 231, 0.8);
+  color: #15803d;
+  border: 2px solid #22c55e;
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+.mark-check {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  font-size: 0.8rem;
+  color: #15803d;
+  font-weight: 900;
+}
+
+/* Hint Text */
+.draft-hint {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: #666;
+  opacity: 0.8;
+}
+
+.hint-x { color: #d32f2f; font-weight: 600; }
+.hint-check { color: #15803d; font-weight: 600; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .digits-grid {
+    gap: 0.5rem;
+  }
+  .digit-card {
+    width: 2.5rem;
+    height: 3rem;
+    font-size: 1.2rem;
+  }
+}
+
 .skeleton-position {
   width: 60px;
   flex-shrink: 0;
