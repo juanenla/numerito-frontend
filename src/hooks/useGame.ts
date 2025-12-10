@@ -22,6 +22,8 @@ interface UseGameReturn extends GameState {
   startNewGame: () => Promise<void>;
   submitGuess: (guess: string) => Promise<void>;
   clearError: () => void;
+  startTime: number | null;
+  endTime: number | null;
 }
 
 /**
@@ -34,6 +36,8 @@ export function useGame(): UseGameReturn {
   const [won, setWon] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [startTime, setStartTime] = useState<number | null>(null);
+  const [endTime, setEndTime] = useState<number | null>(null);
 
   /**
    * Limpia el error actual
@@ -121,6 +125,8 @@ export function useGame(): UseGameReturn {
       setAttempts([]);
       setFinished(false);
       setWon(false);
+      setStartTime(Date.now());
+      setEndTime(null);
 
       // Guardar en localStorage
       saveGameIdToStorage(response.gameId);
@@ -174,6 +180,7 @@ export function useGame(): UseGameReturn {
         setFinished(true);
         if (response.win) {
           setWon(true);
+          setEndTime(Date.now());
           // Limpiar localStorage al ganar
           clearGameIdFromStorage();
         }
@@ -216,5 +223,7 @@ export function useGame(): UseGameReturn {
     startNewGame,
     submitGuess,
     clearError,
+    startTime,
+    endTime,
   };
 }

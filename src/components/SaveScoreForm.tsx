@@ -9,10 +9,11 @@ import { ApiError } from '../services/gameApi';
 interface SaveScoreFormProps {
   attempts: number;
   gameId: string | null;
+  timeSeconds: number;
   onScoreSaved?: () => void;
 }
 
-export function SaveScoreForm({ attempts, gameId, onScoreSaved }: SaveScoreFormProps) {
+export function SaveScoreForm({ attempts, gameId, timeSeconds, onScoreSaved }: SaveScoreFormProps) {
   const [playerName, setPlayerName] = useState('');
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -29,6 +30,7 @@ export function SaveScoreForm({ attempts, gameId, onScoreSaved }: SaveScoreFormP
         playerName: playerName.trim() || 'Anónimo',
         attempts,
         gameId: gameId || undefined,
+        timeSeconds,
       });
 
       setSaved(true);

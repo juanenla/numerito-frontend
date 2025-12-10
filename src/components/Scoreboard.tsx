@@ -125,6 +125,7 @@ export function Scoreboard({ limit = 10, refreshTrigger = 0 }: ScoreboardProps) 
             <th>Pos.</th>
             <th>Jugador</th>
             <th>Intentos</th>
+            <th>Tiempo</th>
             <th>Fecha</th>
           </tr>
         </thead>
@@ -137,6 +138,11 @@ export function Scoreboard({ limit = 10, refreshTrigger = 0 }: ScoreboardProps) 
               <td className="player-name">{score.playerName}</td>
               <td className="attempts">
                 <strong>{score.attempts}</strong>
+              </td>
+              <td className="time">
+                {score.timeSeconds ? (
+                  <span>{Math.floor(score.timeSeconds / 60)}:{String(score.timeSeconds % 60).padStart(2, '0')}</span>
+                ) : '-'}
               </td>
               <td className="date">{formatDate(score.createdAt)}</td>
             </tr>

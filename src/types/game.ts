@@ -51,11 +51,12 @@ export interface AttemptHistory extends GuessResponse {
  * Score/puntuación de una partida
  */
 export interface Score {
-  id: string;
+  id: string; // UUID
   playerName: string;
   attempts: number;
-  createdAt: string;  // ISO 8601 timestamp
-  gameId?: string;
+  timeSeconds?: number;
+  createdAt: string; // ISO date
+  gameId: string;
 }
 
 /**
@@ -64,5 +65,6 @@ export interface Score {
 export interface SaveScoreRequest {
   playerName: string;
   attempts: number;
+  timeSeconds?: number;
   gameId?: string;
 }
