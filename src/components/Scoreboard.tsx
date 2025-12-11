@@ -119,36 +119,38 @@ export function Scoreboard({ limit = 10, refreshTrigger = 0 }: ScoreboardProps) 
         Los mejores {limit} jugadores ordenados por menor cantidad de intentos
       </p>
 
-      <table className="scoreboard-table">
-        <thead>
-          <tr>
-            <th>Pos.</th>
-            <th>Jugador</th>
-            <th>Intentos</th>
-            <th>Tiempo</th>
-            <th>Fecha</th>
-          </tr>
-        </thead>
-        <tbody>
-          {scores.map((score, index) => (
-            <tr key={score.id} className={index < 3 ? 'top-three' : ''}>
-              <td className="position">
-                {getMedalEmoji(index + 1)} {index + 1}
-              </td>
-              <td className="player-name">{score.playerName}</td>
-              <td className="attempts">
-                <strong>{score.attempts}</strong>
-              </td>
-              <td className="time">
-                {score.timeSeconds ? (
-                  <span>{Math.floor(score.timeSeconds / 60)}:{String(score.timeSeconds % 60).padStart(2, '0')}</span>
-                ) : '-'}
-              </td>
-              <td className="date">{formatDate(score.createdAt)}</td>
+      <div className="table-responsive">
+        <table className="scoreboard-table">
+          <thead>
+            <tr>
+              <th>Pos.</th>
+              <th>Jugador</th>
+              <th>Intentos</th>
+              <th>Tiempo</th>
+              <th>Fecha</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {scores.map((score, index) => (
+              <tr key={score.id} className={index < 3 ? 'top-three' : ''}>
+                <td className="position">
+                  {getMedalEmoji(index + 1)} {index + 1}
+                </td>
+                <td className="player-name">{score.playerName}</td>
+                <td className="attempts">
+                  <strong>{score.attempts}</strong>
+                </td>
+                <td className="time">
+                  {score.timeSeconds ? (
+                    <span>{Math.floor(score.timeSeconds / 60)}:{String(score.timeSeconds % 60).padStart(2, '0')}</span>
+                  ) : '-'}
+                </td>
+                <td className="date">{formatDate(score.createdAt)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       <button className="btn-secondary refresh-btn" onClick={loadScores}>
         🔄 Actualizar

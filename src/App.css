@@ -163,9 +163,11 @@ button:disabled {
     opacity: 0;
     transform: scale(0.9) translateY(-20px);
   }
+
   60% {
     transform: scale(1.02) translateY(0);
   }
+
   100% {
     opacity: 1;
     transform: scale(1) translateY(0);
@@ -187,6 +189,7 @@ button:disabled {
   0% {
     transform: translateX(-100%) translateY(-100%) rotate(45deg);
   }
+
   100% {
     transform: translateX(100%) translateY(100%) rotate(45deg);
   }
@@ -279,9 +282,19 @@ button:disabled {
 }
 
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-10px); }
-  75% { transform: translateX(10px); }
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-10px);
+  }
+
+  75% {
+    transform: translateX(10px);
+  }
 }
 
 .guess-form input:disabled {
@@ -311,6 +324,7 @@ button:disabled {
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -384,6 +398,7 @@ button:disabled {
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -406,9 +421,11 @@ button:disabled {
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.02);
   }
+
   100% {
     transform: scale(1);
   }
@@ -503,9 +520,12 @@ button:disabled {
 }
 
 @keyframes bounce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-5px);
   }
@@ -778,6 +798,7 @@ button:disabled {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -795,6 +816,7 @@ button:disabled {
   0% {
     background-position: -200% 0;
   }
+
   100% {
     background-position: 200% 0;
   }
@@ -855,7 +877,8 @@ button:disabled {
   color: #333;
   font-size: 1.5rem;
   font-weight: 700;
-  font-family: 'Inter', sans-serif; /* Asegurar fuente moderna */
+  font-family: 'Inter', sans-serif;
+  /* Asegurar fuente moderna */
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   display: flex;
@@ -926,14 +949,22 @@ button:disabled {
   opacity: 0.8;
 }
 
-.hint-x { color: #d32f2f; font-weight: 600; }
-.hint-check { color: #15803d; font-weight: 600; }
+.hint-x {
+  color: #d32f2f;
+  font-weight: 600;
+}
+
+.hint-check {
+  color: #15803d;
+  font-weight: 600;
+}
 
 /* Responsive */
 @media (max-width: 600px) {
   .digits-grid {
     gap: 0.5rem;
   }
+
   .digit-card {
     width: 2.5rem;
     height: 3rem;
@@ -1153,6 +1184,55 @@ button:disabled {
   }
 
   .badge-label {
-    display: none; /* Hide labels on very small screens */
+    display: none;
+    /* Hide labels on very small screens */
+  }
+}
+
+/* =========================================
+   Responsive Fixes
+   ========================================= */
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem;
+  }
+
+  /* Fix Input Centering */
+  .guess-form input {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 260px;
+    /* Un poco más ancho en móvil para touch */
+  }
+
+  .game-header h1 {
+    font-size: 2.5rem;
+  }
+
+  /* Make scoreboard scrollable if needed */
+  .scoreboard {
+    padding: 1rem;
+    overflow-x: hidden;
+    /* Prevent parent scroll */
+  }
+
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+
+  .scoreboard-table {
+    min-width: 400px;
+    /* Force scroll if too compressed */
+  }
+
+  .scoreboard-table th,
+  .scoreboard-table td {
+    padding: 0.5rem;
+    font-size: 0.8rem;
   }
 }
