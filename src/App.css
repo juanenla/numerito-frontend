@@ -1199,11 +1199,30 @@ button:disabled {
   }
 
   /* Fix Input Centering */
+  .guess-form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .input-group {
+    width: 100%;
+    justify-content: center;
+  }
+
   .guess-form input {
-    flex: 1 1 auto;
+    flex: 0 1 260px;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .guess-form button[type="submit"] {
     width: 100%;
     max-width: 260px;
-    /* Un poco más ancho en móvil para touch */
+    margin: 1rem auto 0;
+    display: block;
   }
 
   .game-header h1 {
